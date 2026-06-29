@@ -27,7 +27,7 @@ const useLocalStorage = (key, initialValue) => {
         JSON.stringify(valueToStore)
       );
     } catch (error) {
-      console.error(error);
+      // console.error(error);
     }
   };
 

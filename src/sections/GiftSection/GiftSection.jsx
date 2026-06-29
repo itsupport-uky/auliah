@@ -148,7 +148,7 @@ const GiftSection = memo(() => {
               )
             )}
           </div>
-
+{/* 
           <motion.div
             initial={{
               opacity: 0
@@ -185,7 +185,7 @@ const GiftSection = memo(() => {
                 mx-auto
               "
             />
-          </motion.div>
+          </motion.div> */}
         </Container>
       </section>
     </>

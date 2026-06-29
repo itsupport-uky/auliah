@@ -11,7 +11,7 @@ import {
 import useAudio from '../../hooks/useAudio';
 
 const AudioPlayer = memo(() => {
-  console.log('AudioPlayer Rendered');
+  // console.log('AudioPlayer Rendered');
   const {
     isPlaying,
     toggle

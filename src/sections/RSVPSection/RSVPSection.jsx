@@ -6,16 +6,19 @@ import React, {
 
 import { motion } from 'framer-motion';
 
+import { useDispatch } from 'react-redux';
 import Container from '../../components/common/Container';
 import SectionTitle from '../../components/common/SectionTitle';
 import Toast from '../../components/ui/Toast';
-
+import { createPesan, fetchPesan } from '../../store/slices/rsvpSlice';
 const STORAGE_KEY =
   'wedding-rsvp-data';
 
 const RSVPSection = memo(() => {
   const [showToast, setShowToast] =
     useState(false);
+  
+  const dispatch = useDispatch();
 
   const [form, setForm] = useState({
     name: '',
@@ -35,85 +38,79 @@ const RSVPSection = memo(() => {
       }));
     }, []);
 
-  const handleSubmit =
-    useCallback(
-      (e) => {
-        e.preventDefault();
+  const handleSubmit = useCallback(
+    async (e) => {
+      e.preventDefault();
 
-        if (
-          !form.name.trim()
-        ) {
-          return alert(
-            'Nama wajib diisi'
-          );
-        }
+      if (!form.name.trim()) {
+        return alert('Nama wajib diisi');
+      }
 
-        if (
-          !form.attendance
-        ) {
-          return alert(
-            'Pilih kehadiran'
-          );
-        }
+      if (!form.attendance) {
+        return alert('Pilih kehadiran');
+      }
 
-        if (
-          Number(
-            form.guestCount
-          ) <= 0
-        ) {
-          return alert(
-            'Jumlah tamu minimal 1'
-          );
-        }
+      if (Number(form.guestCount) <= 0) {
+        return alert('Jumlah tamu minimal 1');
+      }
 
-        if (
-          form.message.length >
-          300
-        ) {
-          return alert(
-            'Pesan maksimal 300 karakter'
-          );
-        }
+      if (form.message.length > 300) {
+        return alert('Pesan maksimal 300 karakter');
+      }
 
-        const existing =
-          JSON.parse(
-            localStorage.getItem(
-              STORAGE_KEY
-            ) || '[]'
-          );
+      await dispatch(createPesan(form)).unwrap();
+      dispatch(fetchPesan());
+      setForm({
+        name: '',
+        attendance: '',
+        guestCount: 1,
+        message: ''
+      });
+      // try {
+      //   const response = await fetch(
+      //     'http://localhost:5000/add-pesan',
+      //     {
+      //       method: 'POST',
+      //       headers: {
+      //         'Content-Type': 'application/json'
+      //       },
+      //       body: JSON.stringify({
+      //         name: form.name,
+      //         attendance: form.attendance,
+      //         guestCount: form.guestCount,
+      //         message: form.message
+      //       })
+      //     }
+      //   );
 
-        existing.unshift({
-          ...form,
-          id:
-            Date.now(),
-          createdAt:
-            new Date().toISOString()
-        });
+      //   const data =
+      //     await response.json();
 
-        localStorage.setItem(
-          STORAGE_KEY,
-          JSON.stringify(
-            existing
-          )
-        );
+      //   console.log(data);
 
-        setForm({
-          name: '',
-          attendance: '',
-          guestCount: 1,
-          message: ''
-        });
+      //   setForm({
+      //     name: '',
+      //     attendance: '',
+      //     guestCount: 1,
+      //     message: ''
+      //   });
 
-        setShowToast(true);
+      //   setShowToast(true);
 
-        window.dispatchEvent(
-          new Event(
-            'wedding-rsvp-updated'
-          )
-        );
-      },
-      [form]
-    );
+      //   window.dispatchEvent(
+      //     new Event(
+      //       'wedding-rsvp-updated'
+      //     )
+      //   );
+      // } catch (error) {
+      //   console.error(error);
+      //   alert(
+      //     'Gagal mengirim RSVP'
+      //   );
+      // }
+    },
+    [form]
+  );
 
   return (
     <>

@@ -127,7 +127,7 @@ const HeroSection = memo(() => {
             text-gray-600
           "
         >
-          20 Juni 2027
+          4 Juli 2026
         </p>
 
         <div

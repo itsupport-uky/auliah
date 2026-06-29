@@ -16,29 +16,29 @@ import weddingMusic from '../assets/music/wedding-music.mp3';
 
 export const weddingData = {
   bride: {
-    name: 'Siti Aisyah',
-    nickname: 'Siti',
-    photo: brideImage,
-    father: 'Bapak H. Ahmad',
-    mother: 'Ibu Hj. Nurhayati',
+    name: 'Muhajir Misbahuddin S.ST',
+    nickname: 'Hajir',
+    photo: groomImage,
+    father: 'Bapak Subhan',
+    mother: 'Ibu Maryam',
     description:
-      'Putri pertama dari keluarga yang penuh cinta dan kebahagiaan.'
+      'Putra kedua yang tumbuh dengan nilai keluarga dan tanggung jawab.'
   },
 
   groom: {
-    name: 'Budi Santoso',
-    nickname: 'Budi',
-    photo: groomImage,
-    father: 'Bapak H. Sutrisno',
-    mother: 'Ibu Hj. Sri Wahyuni',
+    name: 'Siti Nur Aulia Jamal',
+    nickname: 'Aulia',
+    photo: brideImage,
+    father: 'Bapak Jamaluddin',
+    mother: 'Ibu Mariati',
     description:
-      'Putra pertama yang tumbuh dengan nilai keluarga dan tanggung jawab.'
-  },
+      'Putri bungsu dari keluarga yang penuh cinta dan kebahagiaan.'
+    },
 
   coverImage,
 
   weddingDate:
-    '2027-06-20T08:00:00',
+    '2026-07-04T08:00:00',
 
   story: [
     {
@@ -66,7 +66,7 @@ export const weddingData = {
     {
       id: 4,
       title: 'Pernikahan',
-      date: '2027',
+      date: '2026',
       description:
         'Hari bahagia yang kami nantikan untuk mengikat janji suci seumur hidup.'
     }
@@ -76,27 +76,27 @@ export const weddingData = {
     {
       id: 1,
       type: 'Akad Nikah',
-      date: '20 Juni 2027',
-      time: '08.00 WITA',
+      date: '4 Juli 2026',
+      time: '10.00 WITA',
       location:
-        'Masjid Agung Makassar',
+        'Masjid Al-Mubarak Paccerakkang',
       address:
-        'Jl. Masjid Raya No.1, Makassar',
+        'Jl. Paccerakkang',
       maps:
-        'https://maps.google.com/?q=Masjid+Agung+Makassar'
+        'https://maps.app.goo.gl/pKdKWWPECgc7LY4Q8'
     },
     {
       id: 2,
       type: 'Resepsi',
-      date: '20 Juni 2027',
+      date: '4 Juli 2025',
       time:
-        '11.00 - 15.00 WITA',
+        '11.00 - Selesai WITA',
       location:
-        'Grand Ballroom Makassar',
+        'Paccerakkang',
       address:
-        'Jl. Jenderal Sudirman No.88, Makassar',
+        'Jl. Paccerakkang No. 158',
       maps:
-        'https://maps.google.com/?q=Grand+Ballroom+Makassar'
+        'https://maps.app.goo.gl/ZQfqEPraKjvfRTY8A'
     }
   ],
 
@@ -130,19 +130,19 @@ export const weddingData = {
   gifts: [
     {
       id: 1,
-      bank: 'Bank BCA',
+      bank: 'DANA',
       accountNumber:
-        '1234567890',
+        '089680557052',
       accountHolder:
-        'Budi Santoso'
+        'Siti Nur Aulia Jamal'
     },
     {
       id: 2,
-      bank: 'Bank Mandiri',
+      bank: 'Bank BNI',
       accountNumber:
-        '9876543210',
+        '1810274600',
       accountHolder:
-        'Siti Aisyah'
+        'Muhajir Misbahuddin'
     }
   ],
 

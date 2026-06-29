@@ -32,7 +32,7 @@ const WeddingPage = () => {
 
       <HeroSection />
 
-      <StorySection />
+      {/* <StorySection /> */}
 
       <BrideGroomSection />
 

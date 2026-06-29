@@ -1,58 +1,54 @@
 import React, {
   memo,
   useEffect,
-  useState
+  useMemo,
 } from 'react';
 
 import { motion } from 'framer-motion';
 
+import {
+  useDispatch,
+  useSelector,
+} from 'react-redux';
+
 import Container from '../../components/common/Container';
 import SectionTitle from '../../components/common/SectionTitle';
 
-const STORAGE_KEY =
-  'wedding-rsvp-data';
+import {
+  fetchPesan,
+} from '../../store/slices/rsvpSlice';
 
 const WishesSection = memo(() => {
-  const [wishes, setWishes] =
-    useState([]);
+  const dispatch = useDispatch();
+
+  const {
+    wishes,
+    loading,
+    error,
+  } = useSelector(
+    (state) => state.rsvp
+  );
 
   useEffect(() => {
-    const loadData = () => {
-      const data =
-        JSON.parse(
-          localStorage.getItem(
-            STORAGE_KEY
-          ) || '[]'
-        );
+    dispatch(fetchPesan());
+  }, [dispatch]);
 
-      const sorted =
-        [...data].sort(
-          (a, b) =>
-            new Date(
-              b.createdAt
-            ) -
-            new Date(
-              a.createdAt
-            )
-        );
+  const sortedWishes = useMemo(() => {
+    if (!Array.isArray(wishes))
+      return [];
 
-      setWishes(sorted);
-    };
-
-    loadData();
-
-    window.addEventListener(
-      'wedding-rsvp-updated',
-      loadData
+    return [...wishes].sort(
+      (a, b) =>
+        new Date(
+          b.date || b.createdAt
+        ) -
+        new Date(
+          a.date || a.createdAt
+        )
     );
-
-    return () => {
-      window.removeEventListener(
-        'wedding-rsvp-updated',
-        loadData
-      );
-    };
-  }, []);
+  }, [wishes]);
+  // console.log(sortedWishes);
+  // console.log('wish');
 
   return (
     <section
@@ -68,102 +64,124 @@ const WishesSection = memo(() => {
           subtitle="Best Wishes"
         />
 
-        <div
-          className="
-            max-w-4xl
-            mx-auto
-            space-y-5
-          "
-        >
-          {wishes.length ===
-            0 && (
-            <div
-              className="
-                text-center
-                text-gray-500
-              "
-            >
-              Belum ada ucapan.
-            </div>
-          )}
+        {loading && (
+          <div
+            className="
+              text-center
+              text-gray-500
+            "
+          >
+            Memuat ucapan...
+          </div>
+        )}
 
-          {wishes.map(
-            (wish) => (
-              <motion.div
-                key={wish.id}
-                initial={{
-                  opacity: 0,
-                  y: 20
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0
-                }}
-                viewport={{
-                  once: true
-                }}
+        {error && (
+          <div
+            className="
+              text-center
+              text-red-500
+            "
+          >
+            {error}
+          </div>
+        )}
+
+        {!loading && (
+          <div
+            className="
+              max-w-4xl
+              mx-auto
+              space-y-5
+            "
+          >
+            {sortedWishes.length ===
+              0 && (
+              <div
                 className="
-                  bg-beige
-                  rounded-3xl
-                  p-6
-                  shadow-luxury
+                  text-center
+                  text-gray-500
                 "
               >
-                <div
+                Belum ada ucapan.
+              </div>
+            )}
+
+            {sortedWishes.map(
+              (wish) => (
+                <motion.div
+                  key={wish.id}
+                  initial={{
+                    opacity: 0,
+                    y: 20,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  viewport={{
+                    once: true,
+                  }}
                   className="
-                    flex
-                    justify-between
-                    gap-4
-                    flex-wrap
-                    mb-3
+                    bg-beige
+                    rounded-3xl
+                    p-6
+                    shadow-luxury
                   "
                 >
-                  <h3
+                  <div
                     className="
-                      font-semibold
+                      flex
+                      justify-between
+                      gap-4
+                      flex-wrap
+                      mb-3
                     "
                   >
-                    {wish.name}
-                  </h3>
+                    <h3
+                      className="
+                        font-semibold
+                      "
+                    >
+                      {wish.nama}
+                    </h3>
 
-                  <span
+                    <span
+                      className="
+                        text-sm
+                        text-gray-500
+                      "
+                    >
+                      {
+                        wish.kehadiran
+                      }
+                    </span>
+                  </div>
+
+                  <p
                     className="
-                      text-sm
+                      text-gray-700
+                      mb-3
+                    "
+                  >
+                    {wish.pesan}
+                  </p>
+
+                  <small
+                    className="
                       text-gray-500
                     "
                   >
-                    {
-                      wish.attendance
-                    }
-                  </span>
-                </div>
-
-                <p
-                  className="
-                    text-gray-700
-                    mb-3
-                  "
-                >
-                  {
-                    wish.message
-                  }
-                </p>
-
-                <small
-                  className="
-                    text-gray-500
-                  "
-                >
-                  {new Date(
-                    wish.createdAt
-                  ).toLocaleString(
-                    'id-ID'
-                  )}
-                </small>
-              </motion.div>
-            )
-          )}
-        </div>
+                    {new Date(
+                      wish.date
+                    ).toLocaleString(
+                      'id-ID'
+                    )}
+                  </small>
+                </motion.div>
+              )
+            )}
+          </div>
+        )}
       </Container>
     </section>
   );

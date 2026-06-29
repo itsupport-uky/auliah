@@ -30,3 +30,12 @@ button {
 a {
   text-decoration: none;
 }
+
+.bg-luxury {
+  background-color: #91C8E4 !important;
+  /* background-image: none; */
+}
+
+.bg-beige {
+  background-color: #FFFBDE !important;
+}
