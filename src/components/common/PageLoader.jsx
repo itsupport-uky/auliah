@@ -1,0 +1,29 @@
+import React from 'react';
+
+const PageLoader = () => {
+  return (
+    <div
+      className="
+        min-h-screen
+        flex
+        items-center
+        justify-center
+        bg-ivory
+      "
+    >
+      <div
+        className="
+          w-12
+          h-12
+          border-4
+          border-gold
+          border-t-transparent
+          rounded-full
+          animate-spin
+        "
+      />
+    </div>
+  );
+};
+
+export default PageLoader;

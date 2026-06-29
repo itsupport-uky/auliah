@@ -1,0 +1,48 @@
+const SplashSection = React.lazy(() =>
+  import('../sections/SplashSection/SplashSection')
+);
+
+const HeroSection = React.lazy(() =>
+  import('../sections/HeroSection/HeroSection')
+);
+
+const StorySection = React.lazy(() =>
+  import('../sections/StorySection/StorySection')
+);
+
+const BrideGroomSection = React.lazy(() =>
+  import('../sections/BrideGroomSection/BrideGroomSection')
+);
+
+const EventSection = React.lazy(() =>
+  import('../sections/EventSection/EventSection')
+);
+
+const GallerySection = React.lazy(() =>
+  import('../sections/GallerySection/GallerySection')
+);
+
+const VideoSection = React.lazy(() =>
+  import('../sections/VideoSection/VideoSection')
+);
+
+const GiftSection = React.lazy(() =>
+  import('../sections/GiftSection/GiftSection')
+);
+
+const RSVPSection = React.lazy(() =>
+  import('../sections/RSVPSection/RSVPSection')
+);
+
+const WishesSection = React.lazy(() =>
+  import('../sections/WishesSection/WishesSection')
+);
+
+const FooterSection = React.lazy(() =>
+  import('../sections/FooterSection/FooterSection')
+);
+
+Phase 4B → GallerySection + VideoSection
+Phase 4C → GiftSection + RSVPSection + WishesSection + FooterSection
+Phase 5 → Layouts, Pages, Routes, App.jsx, main.jsx
+Phase 6 → Global CSS, Optimization, Final Review
