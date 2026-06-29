@@ -57,7 +57,7 @@ const FooterSection = memo(() => {
           ©{' '}
           {new Date().getFullYear()}
           {' '}
-          Wedding Invitation
+          Kompas Outdor
         </div>
       </div>
     </footer>
