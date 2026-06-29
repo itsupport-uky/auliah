@@ -57,7 +57,7 @@ const FooterSection = memo(() => {
           ©{' '}
           {new Date().getFullYear()}
           {' '}
-          Kompas Outdor
+          Kompas Outdoor
         </div>
       </div>
     </footer>
