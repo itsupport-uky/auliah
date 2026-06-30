@@ -58,6 +58,14 @@ const GiftSection = memo(() => {
             title="Wedding Gift"
             subtitle="Tanda Kasih"
           />
+          <p className="
+            text-center
+            mt-3
+            text-gray-600
+            bt-1
+          ">
+            Tanpa mengurangi rasa hormat bagi Bapak/Ibu/Saudara/i yang ingin memberikan tanda kasih kepada kami dapat melalui:
+          </p>
 
           <div
             className="

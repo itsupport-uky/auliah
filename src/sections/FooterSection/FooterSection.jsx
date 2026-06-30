@@ -26,6 +26,23 @@ const FooterSection = memo(() => {
             mb-4
           "
         >
+          Terima Kasih
+        </h3>
+        <p
+          className="
+            text-white/80
+            mb-4
+          "
+        >
+          Merupakan suatu kebahagiaan dan kehormatan bagi kami, apabila Bapak/Ibu/Saudara/i, berkenan hadir dan memberikan do'a restu kepada kami.
+        </p>
+        <h3
+          className="
+            font-heading
+            text-4xl
+            mb-4
+          "
+        >
           {
             weddingData.groom
               .nickname
@@ -37,7 +54,7 @@ const FooterSection = memo(() => {
           }
         </h3>
 
-        <p
+        {/* <p
           className="
             text-white/80
           "
@@ -45,7 +62,7 @@ const FooterSection = memo(() => {
           Dibuat dengan cinta
           untuk hari bahagia
           kami
-        </p>
+        </p> */}
 
         <div
           className="

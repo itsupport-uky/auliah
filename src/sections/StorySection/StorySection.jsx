@@ -15,103 +15,89 @@ const StorySection = memo(() => {
       "
     >
       <Container>
-        <SectionTitle
-          title="Cerita Kami"
-          subtitle="Love Story"
-        />
+        {/* <SectionTitle
+          title="Love Story"
+          subtitle="Our Journey"
+        /> */}
 
-        <div
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 40
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0
+          }}
+          viewport={{
+            once: true
+          }}
           className="
-            relative
-            max-w-3xl
+            max-w-4xl
             mx-auto
+            text-center
           "
         >
           <div
             className="
-              absolute
-              left-4
-              top-0
-              bottom-0
-              w-[2px]
+              w-20
+              h-px
               bg-gold
+              mx-auto
+              mb-10
             "
           />
 
-          {weddingData.story.map(
-            (item) => (
-              <motion.div
-                key={item.id}
-                initial={{
-                  opacity: 0,
-                  x: -30
-                }}
-                whileInView={{
-                  opacity: 1,
-                  x: 0
-                }}
-                viewport={{
-                  once: true
-                }}
+          <span
+            className="
+              block
+              font-heading
+              text-6xl
+              md:text-7xl
+              text-gold
+              leading-none
+              mb-6
+            "
+          >
+            "
+          </span>
+
+          <p
+            className="
+              text-center
+              mt-3
+              text-gray-600
+            "
+          >
+            {weddingData.quote?.text}
+          </p>
+
+          {weddingData.quote?.author && (
+            <>
+              <div
                 className="
-                  relative
-                  pl-14
-                  mb-10
+                  w-20
+                  h-px
+                  bg-gold
+                  mx-auto
+                  my-10
+                "
+              />
+
+              <p
+                className="
+                  text-gold
+                  uppercase
+                  tracking-[0.3em]
+                  text-sm
+                  font-medium
                 "
               >
-                <div
-                  className="
-                    absolute
-                    left-0
-                    top-2
-                    w-8
-                    h-8
-                    rounded-full
-                    bg-gold
-                  "
-                />
-
-                <div
-                  className="
-                    bg-white
-                    rounded-3xl
-                    p-6
-                    shadow-luxury
-                  "
-                >
-                  <p
-                    className="
-                      text-gold
-                      mb-2
-                    "
-                  >
-                    {item.date}
-                  </p>
-
-                  <h3
-                    className="
-                      font-heading
-                      text-2xl
-                      mb-2
-                    "
-                  >
-                    {item.title}
-                  </h3>
-
-                  <p
-                    className="
-                      text-gray-600
-                    "
-                  >
-                    {
-                      item.description
-                    }
-                  </p>
-                </div>
-              </motion.div>
-            )
+                {weddingData.quote.author}
+              </p>
+            </>
           )}
-        </div>
+        </motion.div>
       </Container>
     </section>
   );

@@ -40,6 +40,11 @@ export const weddingData = {
   weddingDate:
     '2026-07-04T08:00:00',
 
+quote: {
+  text: 'Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan hidup dari jenismu sendiri supaya kamu merasa tenteram kepadanya, dan dijadikan-Nya di antaramu rasa kasih dan sayang.',
+  author: 'QS. Ar-Rum : 21'
+},
+
   story: [
     {
       id: 1,
